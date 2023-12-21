@@ -1,5 +1,6 @@
 import { useState } from "react";
 import ToDoList from "./ToDoList";
+import CoinTracker from "./CoinTracker";
 
 function App() {
   const [value, setValue] = useState("xx");
@@ -16,6 +17,7 @@ function App() {
       </select>
       <hr />
       {value === "0" ? <ToDoList /> : null}
+      {value === "1" ? <CoinTracker /> : null}
     </div>
   );
 }

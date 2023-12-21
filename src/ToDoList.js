@@ -15,7 +15,7 @@ function ToDoList() {
 
   return (
     <div>
-      <h1>My To Dos {toDos.length}</h1>
+      <h1>My To Dos ({toDos.length})</h1>
       <form onSubmit={onSubmit}>
         <input
           value={toDo}
