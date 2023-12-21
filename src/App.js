@@ -1,24 +1,19 @@
-import { useState } from "react";
-import ToDoList from "./ToDoList";
-import CoinTracker from "./CoinTracker";
+import { Routes, Route } from "react-router-dom";
+import ToDoList from "./routes/ToDoList";
+import CoinTraker from "./routes/CoinTracker";
+import Home from "./routes/Home";
+import MovieApp from "./routes/MovieApp";
+import MovieDetail from "./routes/MovieDetail";
 
 function App() {
-  const [value, setValue] = useState("xx");
-  const onChange = (event) => setValue(event.target.value);
-
   return (
-    <div>
-      <h1>Welcome React Projects</h1>
-      <select onChange={onChange} value={value}>
-        <option value={"xx"}>Select Project</option>
-        <option value={"0"}>To Do List</option>
-        <option value={"1"}>Coin Tracker</option>
-        <option value={"2"}>Movie App</option>
-      </select>
-      <hr />
-      {value === "0" ? <ToDoList /> : null}
-      {value === "1" ? <CoinTracker /> : null}
-    </div>
+    <Routes>
+      <Route path="/todolist" element={<ToDoList />}></Route>
+      <Route path="/cointracker" element={<CoinTraker />}></Route>
+      <Route path="/movies/:id" element={<MovieDetail />}></Route>
+      <Route path="/movies" element={<MovieApp />}></Route>
+      <Route path="/" element={<Home />}></Route>
+    </Routes>
   );
 }
 
