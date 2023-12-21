@@ -1,37 +1,21 @@
-import { element } from "prop-types";
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import ToDoList from "./ToDoList";
 
 function App() {
-  const [toDo, setToDo] = useState("");
-  const [toDos, setToDos] = useState([]);
-  const onChange = (event) => setToDo(event.target.value);
-  const onSubmit = (event) => {
-    event.preventDefault();
-    if (toDo === "") {
-      return;
-    }
-    setToDos((currentToDos) => [toDo, ...currentToDos]);
-    setToDo("");
-  };
+  const [value, setValue] = useState("xx");
+  const onChange = (event) => setValue(event.target.value);
 
   return (
     <div>
-      <h1>My To Dos {toDos.length}</h1>
-      <form onSubmit={onSubmit}>
-        <input
-          value={toDo}
-          onChange={onChange}
-          type="text"
-          placeholder="Write your to do..."
-        />
-        <button type="submit">Add To Do</button>
-      </form>
+      <h1>Welcome React Projects</h1>
+      <select onChange={onChange} value={value}>
+        <option value={"xx"}>Select Project</option>
+        <option value={"0"}>To Do List</option>
+        <option value={"1"}>Coin Tracker</option>
+        <option value={"2"}>Movie App</option>
+      </select>
       <hr />
-      <ul>
-        {toDos.map((value, index) => (
-          <li key={index}>{value}</li>
-        ))}
-      </ul>
+      {value === "0" ? <ToDoList /> : null}
     </div>
   );
 }
